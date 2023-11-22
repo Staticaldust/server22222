@@ -1,0 +1,9 @@
+# values.yaml
+postgresql:
+  namespace: erp
+  enabled: true
+  postgresqlUsername: postgres
+  postgresqlPassword: root
+  postgresqlDatabase: users
+  service:
+    port: 5432

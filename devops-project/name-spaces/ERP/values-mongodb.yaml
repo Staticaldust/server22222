@@ -1,6 +1,6 @@
 architecture: replicaset
 auth:
-  namespace: bnr
+  namespace: erp
   enabled: true
   rootUser: root
   rootPassword: "password"

@@ -1,0 +1,22 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: oms-client-deployment
+  namespace: oms
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: oms-client
+  template:
+    metadata:
+      labels:
+        app: oms-client
+    spec:
+      containers:
+        - name: oms-client
+        namespace: oms
+          # image: yakovperets/devops-shop-client:1
+          ports:
+            - containerPort: 3000
+            

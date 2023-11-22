@@ -1,8 +1,8 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  namespace: bnr
   name: bnr-client-deployment
+  namespace: bnr
 spec:
   replicas: 3
   selector:
@@ -15,9 +15,8 @@ spec:
     spec:
       containers:
         - name: bnr-client
+        namespace: bnr
           # image: yakovperets/devops-shop-client:1
           ports:
             - containerPort: 3000
-            envFrom:
-            - configMapRef:
-                name: bnr-configmap
+            

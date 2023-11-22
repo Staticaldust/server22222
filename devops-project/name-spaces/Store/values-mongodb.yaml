@@ -1,6 +1,6 @@
 architecture: replicaset
 auth:
-  namespace: bnr
+  namespace: store
   enabled: true
   rootUser: root
   rootPassword: "password"

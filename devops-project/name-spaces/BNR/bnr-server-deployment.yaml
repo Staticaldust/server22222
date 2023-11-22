@@ -22,15 +22,48 @@ spec:
             - name: PORT
               valueFrom:
                 secretKeyRef:
-                  name: bnr-secret
+                  name: bnr-mongodb-secret
+                  namespace: bnr
                   key: PORT
-            - name: MONGO_URI
+            - name: MONGODB_URI
               valueFrom:
                 secretKeyRef:
-                  name: bnr-secret
-                  key: MONGO_URI
+                  name: bnr-mongodb-secret
+                  namespace: bnr
+                  key: MONGODB_URI
             - name: JWT_SECRET
               valueFrom:
                 secretKeyRef:
-                  name: bnr-secret
+                  name: bnr-mongodb-secret
+                  namespace: bnr
                   key: JWT_SECRET
+            - name: POSTGRESQL_CONNECTION_STRING
+              valueFrom:
+                secretKeyRef:
+                  name: bnr-postgresql-secret
+                  namespace: bnr
+                  key: POSTGRESQL_CONNECTION_STRING
+            - name: APP_ENV
+              valueFrom:
+                configMapRef:
+                  name: bnr-server-configmap
+                  namespace: bnr
+                  key: APP_ENV
+            - name: LOG_LEVEL
+              valueFrom:
+                configMapRef:
+                  name: bnr-server-configmap
+                  namespace: bnr
+                  key: LOG_LEVEL
+            - name: GMAIL_USERNAME
+              valueFrom:
+                configMapRef:
+                  name: bnr-server-configmap
+                  namespace: bnr
+                  key: GMAIL_USERNAME
+            - name: GMAIL_APP_PASSWORD
+              valueFrom:
+                configMapRef:
+                  name: bnr-server-configmap
+                  namespace: bnr
+                  key: GMAIL_APP_PASSWORD

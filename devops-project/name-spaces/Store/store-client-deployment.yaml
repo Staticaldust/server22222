@@ -1,0 +1,22 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: store-client-deployment
+  namespace: store
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: store-client
+  template:
+    metadata:
+      labels:
+        app: store-client
+    spec:
+      containers:
+        - name: store-client
+        namespace: store
+          # image: yakovperets/devops-shop-client:1
+          ports:
+            - containerPort: 3000
+            

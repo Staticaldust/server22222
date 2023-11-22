@@ -1,0 +1,9 @@
+# values.yaml
+postgresql:
+  namespace: store
+  enabled: true
+  postgresqlUsername: postgres
+  postgresqlPassword: root
+  postgresqlDatabase: users
+  service:
+    port: 5432
