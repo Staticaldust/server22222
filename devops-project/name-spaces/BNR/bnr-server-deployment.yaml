@@ -1,0 +1,36 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  namespace: bnr
+  name: bnr-server-deployment
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: bnr-server
+  template:
+    metadata:
+      labels:
+        app: bnr-server
+    spec:
+      containers:
+        - name: bnr-server
+          image: staticaldust/stam:latest
+          ports:
+            - containerPort: 3001
+          env:
+            - name: PORT
+              valueFrom:
+                secretKeyRef:
+                  name: bnr-secret
+                  key: PORT
+            - name: MONGO_URI
+              valueFrom:
+                secretKeyRef:
+                  name: bnr-secret
+                  key: MONGO_URI
+            - name: JWT_SECRET
+              valueFrom:
+                secretKeyRef:
+                  name: bnr-secret
+                  key: JWT_SECRET

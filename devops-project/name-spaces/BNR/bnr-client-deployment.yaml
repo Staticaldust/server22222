@@ -1,0 +1,23 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  namespace: bnr
+  name: bnr-client-deployment
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: bnr-client
+  template:
+    metadata:
+      labels:
+        app: bnr-client
+    spec:
+      containers:
+        - name: bnr-client
+          # image: yakovperets/devops-shop-client:1
+          ports:
+            - containerPort: 3000
+            envFrom:
+            - configMapRef:
+                name: bnr-configmap
