@@ -3,36 +3,43 @@ kind: Ingress
 metadata:
   name: my-ingress
   namespace: ingress-namespace
+  annotations:
+    kubernetes.io/ingress.class: "alb"
+    alb.ingress.kubernetes.io/scheme: "internet-facing"
 spec:
   rules:
-    - host:
+    - host: my-domain.example.com
       http:
         paths:
           - path: /bnr
             pathType: Prefix
             backend:
               service:
-                name: your-service-1
+                name: bnr-client-service
+                namespace: bnr
                 port:
                   number: 80
           - path: /erp
             pathType: Prefix
             backend:
               service:
-                name: your-service-2
+                name: erp-client-service
+                namespace: erp
                 port:
                   number: 80
           - path: /oms
             pathType: Prefix
             backend:
               service:
-                name: your-service-3
+                name: oms-client-service
+                namespace: oms
                 port:
                   number: 80
           - path: /store
             pathType: Prefix
             backend:
               service:
-                name: your-service-4
+                name: store-client-service
+                namespace: store
                 port:
                   number: 80
